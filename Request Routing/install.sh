@@ -7,3 +7,7 @@ echo "$DATA" > route.js
 echo "Made route.js file!"
 chmod +x route.js
 echo "Made route.js executable!"
+
+npm i express
+
+echo "Installed express as a dependency for this package!"
