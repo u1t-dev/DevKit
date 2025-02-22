@@ -8,6 +8,6 @@ echo "Made route.js file!"
 chmod +x route.js
 echo "Made route.js executable!"
 
-npm i express
+npm i express dotenv
 
-echo "Installed express as a dependency for this package!"
+echo "Installed express & dotenv as dependencies for this package!"
