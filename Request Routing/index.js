@@ -1,14 +1,10 @@
+#!/usr/bin/env node
+
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 
-import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
-
 import express from "express";
 import "dotenv/config";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -56,42 +52,46 @@ const setupRoute = (obj, func) => {
   const reqType = obj.requestType?.toLowerCase();
   console.log(`🔹 Setting up route: ${obj.route} [${reqType}]`);
 
-  app[reqType](obj.route, async (req, res) => {
-    console.log(`📥 Incoming ${req.method} request: ${req.url}`);
+  if (isValidHTTPVerb(reqType))
+    app[reqType](obj.route, async (req, res) => {
+      console.log(`📥 Incoming ${req.method} request: ${req.url}`);
 
-    if (func && typeof func === "function") {
-      console.log(`🔧 Custom handler for ${obj.route}`);
-      return func(req, res);
-    }
-
-    let ret =
-      "This content cannot be displayed as you do not have the necessary";
-    if (isValidBaseWASM(obj.type)) {
-      console.log(`📖 Reading file: ${obj.file}`);
-      try {
-        ret = await readFile(join(__dirname, obj.file), "utf8");
-      } catch (error) {
-        console.error(`🚨 Error reading file ${obj.file}:`, error.message);
-        return res
-          .status(500)
-          .send("🚨 Internal Server Error: File not found!");
+      if (func && typeof func === "function") {
+        console.log(`🔧 Custom handler for ${obj.route}`);
+        return func(req, res);
       }
-    }
 
-    console.log("📤 Sending response...");
-    res
-      .status(200)
-      .set(
-        "Content-Type",
-        isValidBaseWASM(obj.type) ? getBasicMIME(obj.type) : "text/plain"
-      )
-      .send(ret);
-  });
+      let ret =
+        "This content cannot be displayed as you do not have the necessary";
+      if (isValidBaseWASM(obj.type)) {
+        console.log(`📖 Reading file: ${obj.file}`);
+        try {
+          ret = await readFile(obj.file, "utf8");
+        } catch (error) {
+          console.error(`🚨 Error reading file ${obj.file}:`, error.message);
+          return res
+            .status(500)
+            .send("🚨 Internal Server Error: File not found!");
+        }
+      }
+
+      console.log("📤 Sending response...");
+      res
+        .status(200)
+        .set(
+          "Content-Type",
+          isValidBaseWASM(obj.type) ? getBasicMIME(obj.type) : "text/plain"
+        )
+        .send(ret);
+    });
+  else {
+    console.error(`${reqType} is not a valid HTTP verb!`);
+  }
 };
 
 (async () => {
-  const dkRoutePath = join(__dirname, "DKRoute");
-  if (!existsSync(dkRoutePath)) throw new Error("❌ DKRoute file not found!");
+  const dkRoutePath = "DKRoute";
+  if (!existsSync(dkRoutePath)) throw new Error(`❌ DKRoute file not found! Expected at ${dkRoutePath}`);
 
   const rawData = await readFile(dkRoutePath, "utf8");
   if (!isValidJSON(rawData)) throw new Error("❌ Invalid DKRoute JSON!");
@@ -102,10 +102,10 @@ const setupRoute = (obj, func) => {
       if (
         obj.func &&
         typeof obj.func === "string" &&
-        existsSync(join(__dirname, obj.func))
+        existsSync(obj.func)
       ) {
         try {
-          const func = await import(join(__dirname, obj.func));
+          const func = await import(obj.func);
           setupRoute(obj, func.default);
         } catch (error) {
           console.error(
@@ -121,10 +121,10 @@ const setupRoute = (obj, func) => {
     if (
       json.func &&
       typeof json.func === "string" &&
-      existsSync(join(__dirname, json.func))
+      existsSync(json.func)
     ) {
       try {
-        const func = await import(join(__dirname, json.func));
+        const func = await import(json.func);
         setupRoute(json, func.default);
       } catch (error) {
         console.error(
