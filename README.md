@@ -8,11 +8,10 @@ Support is planned for the following languages to be used:
 - HTML
 - CSS
 - Java
-- Visual Basic (VB.NET & VBA)
 - Python
 - Lua
 - WebAssembly (yes, you'll be able to make a website through pure WASM)
-- Native LaTeX rendering
+- Native LaTeX rendering (note: you cannot make a website in LaTeX, it just eliminates the middleman aka you don't have to convert to PDF anymore)
 - C#
 - Rust
 - Swift
