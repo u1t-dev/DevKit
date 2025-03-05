@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATA=$(curl -X GET https://github.com/u1t-dev/DevKit/raw/refs/heads/main/Request%20Routing/JS/index.js)
+DATA=$(curl -X GET https://raw.githubusercontent.com/u1t-dev/DevKit/refs/heads/main/Request%20Routing/JS/index.js)
 
 touch route.js
 echo "$DATA" > route.js
