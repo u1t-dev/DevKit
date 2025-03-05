@@ -1,3 +1,0 @@
-See https://trello.com/c/het30YlA#comment-67ba6192f2ae2ba6f9c6f1c0 to get the command to download
-
-Or, alternatively, copy the code from index.js into your own project and install the dependencies yourself
