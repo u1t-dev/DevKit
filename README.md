@@ -53,4 +53,4 @@ View the Trello board [here](https://trello.com/b/jHqNVvh4/devkit-timeline)
   - Coded main functionality (yes)
   - Published to NPM (deprecated)
   - Add more language support (working on)
-  - Now installed via `/bin/bash -c "$(curl -fsSL https://github.com/u1t-dev/DevKit/raw/refs/heads/main/Request%20Routing/install.sh)"`!
+  - Now installed via `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/u1t-dev/DevKit/refs/heads/main/Request%20Routing/JS/install.sh)"`!
