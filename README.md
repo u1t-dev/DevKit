@@ -54,4 +54,3 @@ View the Trello board [here](https://trello.com/b/jHqNVvh4/devkit-timeline)
   - Published to NPM (deprecated)
   - Add more language support (working on)
   - Now installed via `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/u1t-dev/DevKit/refs/heads/main/Request%20Routing/JS/install.sh)"`!
-- Important Note: the project is not actually 91.5% or whatever WASM, GitHub is just saying that it is because I uploaded *one* file whose .wat equivalent is slightly less than 100k lines (blame Emscripten, my C++ game is fine)
