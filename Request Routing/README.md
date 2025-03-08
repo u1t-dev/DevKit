@@ -1,5 +1,5 @@
 # How to use DevKit Routing:
-- Make a file called `DKRoute` in the directory you want to use
+- Make a file called `DKRoute.json` in the directory you want to use
 - Format:
 ```jsonc
 // this is an example
