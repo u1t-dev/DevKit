@@ -1,3 +1,5 @@
 this was a test to see how C++ compiled to WASM so i could understand what specifically was going on with the code
 
 note: this is not—by any means—a finished product. this was simply for me to see how the C++ libraries would compile to WASM & JS so i could figure out how to parse the compiled binaries
+
+blame emscripten for the weird js syntax, i wouldn't willingly type out that much js (in a single file)
