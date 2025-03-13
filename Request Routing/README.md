@@ -25,6 +25,7 @@
   }
 ]
 ```
+- The C# module currently does not have the dynamic function feature, it will be added soon
 
 ---
 
