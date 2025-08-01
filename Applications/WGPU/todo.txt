@@ -1,0 +1,6 @@
+- make an actual parser
+- add more tags
+- make styling
+- figure out how to support images
+- make it redraw every so often
+- make an actual way to modify the content without a DOM
