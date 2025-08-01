@@ -9,3 +9,5 @@ the code in `src/` will be replaced later on
 - `./webgpu file` (for testing, `./webgpu test.dkx` if you have my thing in there)
 
 <img width="1062" height="705" alt="image" src="https://github.com/user-attachments/assets/056f17b5-da42-4a29-90f4-8bb955fa55b7" />
+
+(NOTE: not provided is `Times New Roman.ttf` due to its status of being copyrighted; you may add it from your own computer into `src/`)
