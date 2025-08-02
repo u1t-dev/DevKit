@@ -55,3 +55,4 @@ View the Trello board [here](https://trello.com/b/jHqNVvh4/devkit-timeline)
   - Add more language support (working on)
   - Now installed via `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/u1t-dev/DevKit/refs/heads/main/Request%20Routing/JS/install.sh)"`!
 - To see compiled code (i.e. WASM & JavaScript from that), go to [this repo](https://github.com/u1t-dev/DevKit-Pastes)
+- The first successful test of my syntax rendering was published yesterday!
