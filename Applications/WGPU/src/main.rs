@@ -37,7 +37,6 @@ fn main() -> Result<()> {
     let raw = fs::read_to_string(&args.file)?;
     let nodes = parse(&raw);
 
-    // Window & GPU setup
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new()
         .with_title("DKX Renderer")
